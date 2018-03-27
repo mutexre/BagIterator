@@ -1,8 +1,7 @@
 # "True" random access iterator in C++ &amp; random_inserter
 
-There are two classes in this project that implement STL iterator interface. The first is a "true_random_access_iterator" that allows accessing any STL container at randomly selected locations. The position is shuffled when iterator gets incremented.
-New location is choosen to be random() % size(container). This iterator is a forward iterator, hence it only supports increment operator, 
-that is sufficient for this iterator type. It allows to write code like this:
+The aim of this project is to provide two convenience iterator classes for shuffled accesses and insertions into STL containers. The first one is a "true_random_access_iterator" that allows accessing any container at randomly selected locations. The position is randomly shuffled when iterator gets incremented. New location is choosen to be equal to random() % size(container). The iterator is a forward iterator, hence it only supports increment operation, 
+that is sufficient for this iterator type. And it allows to write code like this:
 
 ```c++
 size_t seed = std::chrono::system_clock::now().time_since_epoch().count();
@@ -17,7 +16,7 @@ for (int i = 0; i < trials; i++)
 }
 ```
 
-The second iterator is random_insert_iterator which is similar to common output iterators like back_insert_iterator and front_insert_iterator. Unlike these iterator types random_insert_iterators insert elements at random positions inside a container. It allows us to write code like this:
+The second class is random_insert_iterator which is similar to common output iterator types like back_insert_iterator and front_insert_iterator. Random_insert_iterator insert elements at random positions inside a container using insert(iter, value) container member function. This class allows to write code like this:
 
 ```c++
 vector<string> src { "A", "B", "C", "D" };
@@ -30,5 +29,5 @@ copy(dst.begin(), dst.end(), ostream_iterator<string>(cout, " "));
 cout << endl;
 ```
   
-true_random_access_iterator::take(long long n) is a convenience function for creating an 'end' iterator for use with
+True_random_access_iterator::take(long long n) is a convenience function for creating an 'end' iterator for use with
 loops and algorithms. It creates an iterator that is n elements far from given iterator. When an iterator is shuffled n times by calling ++ operator, it becomes equal to its take(n) counterpart.
