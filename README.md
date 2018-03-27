@@ -16,7 +16,7 @@ for (int i = 0; i < trials; i++)
 }
 ```
 
-The second class is random_insert_iterator which is similar to common output iterator types like back_insert_iterator and front_insert_iterator. Random_insert_iterator insert elements at random positions inside a container using insert(iter, value) container member function. This class allows to write code like this:
+The second class is random_insert_iterator which is similar to common output iterator types like back_insert_iterator and front_insert_iterator. Random_insert_iterator inserts elements at random positions inside a container using insert(iter, value) container member function. This class allows to write code like this:
 
 ```c++
 vector<string> src { "A", "B", "C", "D" };
@@ -24,9 +24,6 @@ list<string> dst { "a", "b", "c", "d" };
 
 auto iter = make_dice_iterator(src, rnd);
 copy(iter, iter.take(5), random_inserter(dst, rnd));
-
-copy(dst.begin(), dst.end(), ostream_iterator<string>(cout, " "));
-cout << endl;
 ```
   
 True_random_access_iterator::take(long long n) is a convenience function for creating an 'end' iterator for use with
