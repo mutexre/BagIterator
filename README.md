@@ -5,6 +5,7 @@ It allows accessing an STL container at randomly selected locations. The positio
 New location is choosen as random() % size(container). This iterator is a forward iterator, hence it only supports increment operator, 
 that is absolutely sufficient for this iterator type. It allows to write code like this:
 
+```c++
 size_t seed = std::chrono::system_clock::now().time_since_epoch().count();
 std::default_random_engine rnd{ static_cast<std::default_random_engine::result_type::result_type>(seed) };
 
@@ -15,9 +16,11 @@ for (int i = 0; i < trials; i++)
   mean += x;
   iter++; // shuffle the position
 }
+```
 
 The second iterator is random_insert_iterator which is similar to common output iterators like back_insert_iterator and front_insert_iterator. Unlike these iterator types random_insert_iterators insert elements at random positions inside a container. It allows us to write code like this:
 
+```c++
 vector<string> src { "A", "B", "C", "D" };
 list<string> dst { "a", "b", "c", "d" };
 
@@ -26,6 +29,7 @@ copy(iter, iter.take(5), random_inserter(dst, rnd));
 
 copy(dst.begin(), dst.end(), ostream_iterator<string>(cout, " "));
 cout << endl;
+```
   
-true_random_access_iterator::take(long long n) is a convenience function used to create an 'end' iterator for use with
+true_random_access_iterator::take(long long n) is a convenience function for creating an 'end' iterator for use with
 loops and algorithms. It creates an iterator that is n elements far from given iterator. When an iterator is shuffled n times by calling ++ operator, it becomes equal to its take(n) counterpart.
