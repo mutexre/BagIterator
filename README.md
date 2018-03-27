@@ -1,9 +1,8 @@
 # "True" random access iterator in C++ &amp; random_inserter
 
-There are two classes in this project that implement STL iterator interface. The first is a "true_random_access_iterator".
-It allows accessing an STL container at randomly selected locations. The position is randomised when incrementing an iterator.
-New location is choosen as random() % size(container). This iterator is a forward iterator, hence it only supports increment operator, 
-that is absolutely sufficient for this iterator type. It allows to write code like this:
+There are two classes in this project that implement STL iterator interface. The first is a "true_random_access_iterator" that allows accessing any STL container at randomly selected locations. The position is shuffled when iterator gets incremented.
+New location is choosen to be random() % size(container). This iterator is a forward iterator, hence it only supports increment operator, 
+that is sufficient for this iterator type. It allows to write code like this:
 
 ```c++
 size_t seed = std::chrono::system_clock::now().time_since_epoch().count();
