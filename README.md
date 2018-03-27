@@ -1,4 +1,4 @@
-# "True" random access iterator in C++ &amp; random_inserter
+# "True" random access iterator &amp; random_inserter
 
 The aim of this project is to provide two convenience iterator classes for shuffled accesses and insertions into STL containers. The first one is a "true_random_access_iterator" that allows accessing any container at randomly selected locations. The position is randomly shuffled when iterator gets incremented. New location is choosen to be equal to random() % size(container). The iterator is a forward iterator, hence it only supports increment operation, 
 that is sufficient for this iterator type. And it allows to write code like this:
