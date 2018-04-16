@@ -1,7 +1,6 @@
 # "True" random access iterator &amp; random_inserter
 
-The aim of this project is to provide two convenience iterator classes for shuffled accesses and insertions into STL containers. The first one is a "true_random_access_iterator" that allows accessing any container at randomly selected locations. The position is randomly shuffled when iterator gets incremented. New location is choosen to be equal to random() % size(container). The iterator is a forward iterator, hence it only supports increment operation, 
-that is sufficient for this iterator type. And it allows to write code like this:
+The aim of this project is to provide convenience iterators for shuffled access and insertion. The first one is a "true_random_access_iterator" that allows accessing any container at a randomly selected location. The position iterator is pointing at is randomly shuffled when iterator is incremented. In other words, new position is choosen to be equal to random() % size(container). The iterator is a forward iterator and it only supports increment operation. It allows one to write code like this:
 
 ```c++
 size_t seed = std::chrono::system_clock::now().time_since_epoch().count();
@@ -16,7 +15,7 @@ for (int i = 0; i < trials; i++)
 }
 ```
 
-The second class is random_insert_iterator which is similar to common output iterator types like back_insert_iterator and front_insert_iterator. Random_insert_iterator inserts elements at random positions inside a container using insert(iter, value) container member function. This class allows to write code like this:
+The second iterator is a random_insert_iterator which is similar to common output iterator types like back_insert_iterator and front_insert_iterator. Random_insert_iterator inserts an element at a random position inside a container using insert(iter, value) member function. This class allows one to write code like this:
 
 ```c++
 vector<string> src { "A", "B", "C", "D" };
@@ -26,5 +25,5 @@ auto iter = make_dice_iterator(src, rnd);
 copy(iter, iter.take(5), random_inserter(dst, rnd));
 ```
   
-True_random_access_iterator::take(long long n) is a convenience function for creating an 'end' iterator for use with
-loops and algorithms. It creates an iterator that is n elements far from given iterator. When an iterator is shuffled n times by calling ++ operator, it becomes equal to its take(n) counterpart.
+true_random_access_iterator::take(long long n) is a convenience function for creating an 'end' iterator for use with
+loops and various STL algorithms. It creates an iterator that is n elements ahead of a given iterator. When an instance of true_random_access_iterator is shuffled n times by calling ++ operator, it becomes equal to its take(n) counterpart.
