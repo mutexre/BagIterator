@@ -1,6 +1,6 @@
 # "True" random access iterator &amp; random_inserter
 
-The aim of this project is to provide convenience iterators for shuffled access and insertion. The first one is a "true_random_access_iterator" that allows accessing any container at a randomly selected location. The position iterator is pointing at is randomly shuffled when iterator is incremented. In other words, new position is choosen to be equal to random() % size(container). The iterator is a forward iterator and it only supports increment operation. It allows one to write code like this:
+The aim of this repository is to provide convenience iterators for shuffled access and insertion. The first one is a "true_random_access_iterator" that allows accessing any container at a randomly selected location. The position iterator is pointing at is randomly shuffled when iterator is incremented. In other words, new position is choosen to be equal to random() % size(container). The iterator is a forward iterator and it only supports increment operation. It allows one to write code like this:
 
 ```c++
 size_t seed = std::chrono::system_clock::now().time_since_epoch().count();
