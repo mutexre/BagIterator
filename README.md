@@ -26,4 +26,4 @@ copy(iter, iter.take(5), random_inserter(dst, rnd));
 ```
   
 true_random_access_iterator::take(long long n) is a convenience function for creating an 'end' iterator for use with
-loops and various STL algorithms. It creates an iterator that is n elements ahead of a given iterator. When an instance of true_random_access_iterator is shuffled n times by calling ++ operator, it becomes equal to its take(n) counterpart.
+loops and various STL algorithms. It creates an iterator that is n elements ahead of given iterator. When an instance of true_random_access_iterator is shuffled n times by calling ++ operator, it becomes equal to its take(n) counterpart.
